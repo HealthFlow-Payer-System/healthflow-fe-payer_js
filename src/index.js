@@ -41,6 +41,7 @@ const DEFAULT_CONFIG = {
       icon: <AccountBalance />,
       route: "/payer/payers",
       filter: (rights) => rights.includes(RIGHT_PAYERS),
+      id: 'admin.payers', 
     },
   ],
   "invoice.SubjectAndThirdpartyPicker": [
