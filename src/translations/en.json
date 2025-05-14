@@ -39,5 +39,9 @@
   "payer.FundingPanel.table.addFunding": "Add Funding",
   "payer.FundingPanel.table.title": "Fundings",
   "payer.AddFundingDialog.title": "Add Funding",
-  "payer.AddFundingDialog.submit": "Submit"
+  "payer.AddFundingDialog.submit": "Submit",
+  "payer.gql_query_payers_perms": "Payer | Query Payers",
+  "payer.gql_mutation_payer_add_perms": "Payer | Mutation Payer Add",
+  "payer.gql_mutation_payer_update_perms": "Payer | Mutation Payer Update",
+  "payer.gql_mutation_payer_delete_perms": "Payer | Mutation Payer Delete"
 }
