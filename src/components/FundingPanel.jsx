@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import { Grid, Paper, Typography, Button } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import AddIcon from "@material-ui/icons/Add";
+import { Grid, Paper, Typography, Button } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import AddIcon from "@mui/icons-material/Add";
 
 import { Table, useTranslations, useModulesManager } from "@openimis/fe-core";
 import { usePayerFundingsQuery } from "../hooks";

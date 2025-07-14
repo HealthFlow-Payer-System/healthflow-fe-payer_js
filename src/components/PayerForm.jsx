@@ -1,8 +1,8 @@
 import React from "react";
 import clsx from "clsx";
 
-import { makeStyles } from "@material-ui/styles";
-import ReplayIcon from "@material-ui/icons/Replay";
+import { makeStyles } from "@mui/styles";
+import ReplayIcon from "@mui/icons-material/Replay";
 
 import { Form, ProgressOrError } from "@openimis/fe-core";
 import FundingPanel from "./FundingPanel";

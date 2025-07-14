@@ -7,12 +7,12 @@ import {
   withHistory,
   clearCurrentPaginationPage,
 } from "@openimis/fe-core";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles } from "@mui/styles";
 import { useSelector, useDispatch } from "react-redux";
 import { RIGHT_PAYERS_ADD, RIGHT_PAYERS_DELETE, MODULE_NAME } from "../constants";
 import { usePayerDeleteMutation } from "../hooks";
-import { Fab } from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
+import { Fab } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 import PayerSearcher from "../components/PayerSearcher";
 
 const useStyles = makeStyles((theme) => ({

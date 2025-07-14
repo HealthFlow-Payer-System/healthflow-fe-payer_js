@@ -8,8 +8,8 @@ import {
   useDebounceCb,
   decodeId,
 } from "@openimis/fe-core";
-import { FormControlLabel, Grid, Checkbox } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { FormControlLabel, Grid, Checkbox } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles((theme) => ({
   form: {

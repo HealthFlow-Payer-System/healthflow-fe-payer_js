@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { Button, Dialog, DialogActions, DialogContent, Grid, DialogTitle } from "@material-ui/core";
+import { Button, Dialog, DialogActions, DialogContent, Grid, DialogTitle } from "@mui/material";
 import {
   useTranslations,
   useModulesManager,
