@@ -1,22 +1,21 @@
 import React from "react";
 import clsx from "clsx";
 
-import { makeStyles } from "@mui/styles";
+import { styled } from "@mui/material/styles";
 import ReplayIcon from "@mui/icons-material/Replay";
 
 import { Form, ProgressOrError } from "@openimis/fe-core";
 import FundingPanel from "./FundingPanel";
 import MainPanelForm from "./MainPanelForm";
 
-const useStyles = makeStyles((theme) => ({
-  page: theme.page,
-  locked: theme.page.locked,
+const StyledPayerForm = styled('div')(({ theme }) => ({
+  ...theme.page,
+  '&.locked': theme.page.locked,
 }));
 
 const PayerForm = ({ readOnly, onBack, onSave, payer, canSave, onReset, onChange, error }) => {
-  const classes = useStyles();
   return (
-    <div className={clsx(classes.page, readOnly && classes.locked)}>
+    <StyledPayerForm className={clsx(readOnly && 'locked')}>
       <ProgressOrError error={error} />
       <Form
         module="payer"
@@ -40,7 +39,7 @@ const PayerForm = ({ readOnly, onBack, onSave, payer, canSave, onReset, onChange
           },
         ]}
       />
-    </div>
+    </StyledPayerForm>
   );
 };
 export default PayerForm;

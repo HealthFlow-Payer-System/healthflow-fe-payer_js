@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 
 import { Grid, Paper, Typography, Button } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import { styled } from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
 
 import { Table, useTranslations, useModulesManager } from "@openimis/fe-core";
 import { usePayerFundingsQuery } from "../hooks";
 import AddFundingDialog from "./AddFundingDialog";
 
-const useStyles = makeStyles((theme) => ({
-  item: theme.paper.item,
-  paper: theme.paper.paper,
-  tableTitle: theme.table.title,
+const StyledFundingPanel = styled('div')(({ theme }) => ({
+  '& .item': theme.paper.item,
+  '& .paper': theme.paper.paper,
+  '& .tableTitle': theme.table.title,
 }));
 
 const HEADERS = ["payer.payDate", "payer.product", "payer.receipt", "payer.amount"];
@@ -22,7 +22,6 @@ const FundingPanel = (props) => {
   const [isDialogOpen, setDialogOpen] = useState(false);
   const modulesManager = useModulesManager();
   const { formatMessage, formatAmount, formatDateFromISO } = useTranslations("payer", modulesManager);
-  const classes = useStyles();
 
   const { data, error, isLoading, refetch } = usePayerFundingsQuery(
     { variables: { payerId: edited.uuid, first: 10, after: pagination.afterCursor, before: pagination.beforeCursor } },
@@ -39,10 +38,10 @@ const FundingPanel = (props) => {
     return <></>;
   }
   return (
-    <>
+    <StyledFundingPanel>
       <Grid item xs={12}>
-        <Paper className={classes.paper}>
-          <Grid container className={classes.tableTitle} justifyContent="space-between" alignItems="center">
+        <Paper className="paper">
+          <Grid container className="tableTitle" justifyContent="space-between" alignItems="center">
             <Grid item>
               <Typography variant="h6">{formatMessage("FundingPanel.table.title")}</Typography>
             </Grid>
@@ -89,7 +88,7 @@ const FundingPanel = (props) => {
         </Paper>
       </Grid>
       <AddFundingDialog open={isDialogOpen} onClose={onDialogClose} payer={edited} />
-    </>
+    </StyledFundingPanel>
   );
 };
 
