@@ -16,7 +16,7 @@
     "start": "rollup -c -w",
     "format": "prettier src -w"
   },
-  "peerDependency": {
+  "peerDependencies": {
     "react-intl": "^5.8.1"
   },
   "devDependencies": {
