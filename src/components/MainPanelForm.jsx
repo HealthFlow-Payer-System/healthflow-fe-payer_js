@@ -12,7 +12,7 @@ const MainPanelForm = (props) => {
   return (
     <StyledMainPanelForm>
       <Grid container direction="row">
-        <Grid item xs={3} className="item">
+        <Grid size={3} className="item">
           <TextInput
             module="payer"
             required
@@ -22,7 +22,7 @@ const MainPanelForm = (props) => {
             onChange={(name) => onEditedChanged({ ...edited, name })}
           />
         </Grid>
-        <Grid item xs={3} className="item">
+        <Grid size={3} className="item">
           <PublishedComponent
             pubRef="payer.PayerTypePicker"
             value={edited.type}
@@ -32,7 +32,7 @@ const MainPanelForm = (props) => {
             onChange={(type) => onEditedChanged({ ...edited, type })}
           />
         </Grid>
-        <Grid item xs={3} className="item">
+        <Grid size={3} className="item">
           <PublishedComponent
             pubRef="location.RegionPicker"
             value={edited.location?.parent ?? edited.location}
@@ -42,7 +42,7 @@ const MainPanelForm = (props) => {
             onChange={(location) => onEditedChanged({ ...edited, location })}
           />
         </Grid>
-        <Grid item xs={3} className="item">
+        <Grid size={3} className="item">
           <PublishedComponent
             region={edited.location?.parent || edited.location}
             value={edited.location?.parent ? edited.location : null}
@@ -52,7 +52,7 @@ const MainPanelForm = (props) => {
             onChange={(location) => onEditedChanged({ ...edited, location: location || edited.location?.parent })}
           />
         </Grid>
-        <Grid item xs={3} className="item">
+        <Grid size={3} className="item">
           <TextInput
             module="payer"
             label="email"
@@ -61,7 +61,7 @@ const MainPanelForm = (props) => {
             onChange={(email) => onEditedChanged({ ...edited, email })}
           />
         </Grid>
-        <Grid item xs={3} className="item">
+        <Grid size={3} className="item">
           <TextInput
             module="payer"
             label="phone"
@@ -70,7 +70,7 @@ const MainPanelForm = (props) => {
             onChange={(phone) => onEditedChanged({ ...edited, phone })}
           />
         </Grid>
-        <Grid item xs={3} className="item">
+        <Grid size={3} className="item">
           <TextInput
             module="payer"
             label="fax"
@@ -79,7 +79,7 @@ const MainPanelForm = (props) => {
             onChange={(fax) => onEditedChanged({ ...edited, fax })}
           />
         </Grid>
-        <Grid item xs={3} className="item">
+        <Grid size={3} className="item">
           <TextInput
             module="payer"
             required

@@ -77,4 +77,5 @@ const PayerDetailsPage = (props) => {
   );
 };
 
+export { PayerDetailsPage };
 export default withHistory(PayerDetailsPage);

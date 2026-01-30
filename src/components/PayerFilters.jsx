@@ -37,7 +37,7 @@ const PayerFilters = (props) => {
           module="payer"
           id="name"
           field={
-            <Grid item xs={4} className="item">
+            <Grid size={4} className="item">
               <TextInput
                 module="payer"
                 name="name"
@@ -52,7 +52,7 @@ const PayerFilters = (props) => {
           module="payer"
           id="region"
           field={
-            <Grid item xs={4} className="item">
+            <Grid size={4} className="item">
               <PublishedComponent
                 pubRef="location.RegionPicker"
                 value={filters.location?.value?.parent ?? filters.location?.value}
@@ -68,7 +68,7 @@ const PayerFilters = (props) => {
           module="payer"
           id="district"
           field={
-            <Grid item xs={4} className="item">
+            <Grid size={4} className="item">
               <PublishedComponent
                 pubRef="location.DistrictPicker"
                 value={filters.location?.value?.parent ? filters.location?.value : null}
@@ -89,7 +89,7 @@ const PayerFilters = (props) => {
           module="payer"
           id="region"
           field={
-            <Grid item xs={4} className="item">
+            <Grid size={4} className="item">
               <PublishedComponent
                 pubRef="payer.PayerTypePicker"
                 value={filters?.type?.value}
@@ -103,7 +103,7 @@ const PayerFilters = (props) => {
           module="payer"
           id="email"
           field={
-            <Grid item xs={4} className="item">
+            <Grid size={4} className="item">
               <TextInput
                 module="payer"
                 name="email"
@@ -118,7 +118,7 @@ const PayerFilters = (props) => {
           module="payer"
           id="phone"
           field={
-            <Grid item xs={4} className="item">
+            <Grid size={4} className="item">
               <TextInput
                 module="payer"
                 name="phone"
@@ -133,7 +133,7 @@ const PayerFilters = (props) => {
           module="payer"
           id="showHistory"
           field={
-            <Grid item xs={12} className="item">
+            <Grid size={12} className="item">
               <FormControlLabel
                 control={
                   <Checkbox

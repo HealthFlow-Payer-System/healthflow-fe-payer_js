@@ -60,4 +60,5 @@ const PayersPage = (props) => {
   );
 };
 
+export { StyledPayersPage };
 export default withHistory(PayersPage);

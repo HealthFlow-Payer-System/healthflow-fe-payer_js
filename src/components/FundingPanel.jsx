@@ -39,13 +39,13 @@ const FundingPanel = (props) => {
   }
   return (
     <StyledFundingPanel>
-      <Grid item xs={12}>
+      <Grid size={12}>
         <Paper className="paper">
           <Grid container className="tableTitle" justifyContent="space-between" alignItems="center">
-            <Grid item>
+            <Grid>
               <Typography variant="h6">{formatMessage("FundingPanel.table.title")}</Typography>
             </Grid>
-            <Grid item>
+            <Grid>
               <Button
                 variant="contained"
                 onClick={() => setDialogOpen(true)}
@@ -57,7 +57,7 @@ const FundingPanel = (props) => {
             </Grid>
           </Grid>
           <Grid container>
-            <Grid item xs={12}>
+            <Grid size={12}>
               <Table
                 error={error}
                 fetching={isLoading}
