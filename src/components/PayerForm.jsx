@@ -9,8 +9,8 @@ import FundingPanel from "./FundingPanel";
 import MainPanelForm from "./MainPanelForm";
 
 const StyledPayerForm = styled('div')(({ theme }) => ({
-  ...theme.page,
-  '&.locked': theme.page.locked,
+  ...theme.page ?? {},
+  '&.locked': theme.page?.locked ?? {},
 }));
 
 const PayerForm = ({ readOnly, onBack, onSave, payer, canSave, onReset, onChange, error }) => {

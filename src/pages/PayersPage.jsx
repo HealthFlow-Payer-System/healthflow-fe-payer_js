@@ -16,8 +16,8 @@ import AddIcon from "@mui/icons-material/Add";
 import PayerSearcher from "../components/PayerSearcher";
 
 const StyledPayersPage = styled('div')(({ theme }) => ({
-  ...theme.page,
-  '& .fab': theme.fab,
+  ...theme.page ?? {},
+  '& .fab': theme.fab ?? {},
 }));
 
 const PayersPage = (props) => {

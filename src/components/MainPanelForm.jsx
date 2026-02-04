@@ -4,7 +4,7 @@ import { Grid } from "@mui/material";
 import { TextInput, PublishedComponent } from "@openimis/fe-core";
 
 const StyledMainPanelForm = styled('div')(({ theme }) => ({
-  '& .item': theme.paper.item,
+  '& .item': theme.paper?.item ?? {},
 }));
 
 const MainPanelForm = (props) => {

@@ -12,7 +12,7 @@ const isRowDisabled = (_, row) => Boolean(row.validityTo);
 const formatLocation = (location) => (location ? `${location.code} - ${location.name}` : null);
 
 const StyledPayerSearcher = styled('div')(({ theme }) => ({
-  '& .horizontalButtonContainer': theme.buttonContainer.horizontal,
+  '& .horizontalButtonContainer': theme.buttonContainer?.horizontal ?? {},
 }));
 
 const PayerSearcher = (props) => {

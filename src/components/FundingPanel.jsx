@@ -9,9 +9,9 @@ import { usePayerFundingsQuery } from "../hooks";
 import AddFundingDialog from "./AddFundingDialog";
 
 const StyledFundingPanel = styled('div')(({ theme }) => ({
-  '& .item': theme.paper.item,
-  '& .paper': theme.paper.paper,
-  '& .tableTitle': theme.table.title,
+  '& .item': theme.paper?.item ?? {},
+  '& .paper': theme.paper?.paper ?? {},
+  '& .tableTitle': theme.table?.title ?? {},
 }));
 
 const HEADERS = ["payer.payDate", "payer.product", "payer.receipt", "payer.amount"];
