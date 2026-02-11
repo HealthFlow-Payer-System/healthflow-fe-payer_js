@@ -7,6 +7,8 @@ import {
   useModulesManager,
   useDebounceCb,
   decodeId,
+  GRID_RESPONSIVE_STANDARD,
+  GRID_RESPONSIVE_SMALL,
 } from "@openimis/fe-core";
 import { FormControlLabel, Grid, Checkbox } from "@mui/material";
 import { styled } from "@mui/material/styles";
@@ -37,7 +39,7 @@ const PayerFilters = (props) => {
           module="payer"
           id="name"
           field={
-            <Grid size={4} className="item">
+            <Grid size={GRID_RESPONSIVE_STANDARD} className="item">
               <TextInput
                 module="payer"
                 name="name"
@@ -52,7 +54,7 @@ const PayerFilters = (props) => {
           module="payer"
           id="region"
           field={
-            <Grid size={4} className="item">
+            <Grid size={GRID_RESPONSIVE_STANDARD} className="item">
               <PublishedComponent
                 pubRef="location.RegionPicker"
                 value={filters.location?.value?.parent ?? filters.location?.value}
@@ -68,7 +70,7 @@ const PayerFilters = (props) => {
           module="payer"
           id="district"
           field={
-            <Grid size={4} className="item">
+            <Grid size={GRID_RESPONSIVE_STANDARD} className="item">
               <PublishedComponent
                 pubRef="location.DistrictPicker"
                 value={filters.location?.value?.parent ? filters.location?.value : null}
@@ -89,7 +91,7 @@ const PayerFilters = (props) => {
           module="payer"
           id="region"
           field={
-            <Grid size={4} className="item">
+            <Grid size={GRID_RESPONSIVE_STANDARD} className="item">
               <PublishedComponent
                 pubRef="payer.PayerTypePicker"
                 value={filters?.type?.value}
@@ -103,7 +105,7 @@ const PayerFilters = (props) => {
           module="payer"
           id="email"
           field={
-            <Grid size={4} className="item">
+            <Grid size={GRID_RESPONSIVE_STANDARD} className="item">
               <TextInput
                 module="payer"
                 name="email"
@@ -118,7 +120,7 @@ const PayerFilters = (props) => {
           module="payer"
           id="phone"
           field={
-            <Grid size={4} className="item">
+            <Grid size={GRID_RESPONSIVE_STANDARD} className="item">
               <TextInput
                 module="payer"
                 name="phone"
@@ -133,7 +135,7 @@ const PayerFilters = (props) => {
           module="payer"
           id="showHistory"
           field={
-            <Grid size={12} className="item">
+            <Grid size={GRID_RESPONSIVE_SMALL} className="item">
               <FormControlLabel
                 control={
                   <Checkbox
