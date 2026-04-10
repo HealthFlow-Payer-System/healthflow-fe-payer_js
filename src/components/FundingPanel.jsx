@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 import { Grid, Paper, Typography, Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import AddIcon from "@mui/icons-material/Add";
 
-import { Table, useTranslations, useModulesManager } from "@openimis/fe-core";
+
+import { GetIconComponent, Table, useTranslations, useModulesManager } from "@openimis/fe-core";
 import { usePayerFundingsQuery } from "../hooks";
 import AddFundingDialog from "./AddFundingDialog";
 
@@ -13,7 +13,7 @@ const StyledFundingPanel = styled('div')(({ theme }) => ({
   '& .paper': theme.paper?.paper ?? {},
   '& .tableTitle': theme.table?.title ?? {},
 }));
-
+const AddIcon = GetIconComponent("Add")
 const HEADERS = ["payer.payDate", "payer.product", "payer.receipt", "payer.amount"];
 
 const FundingPanel = (props) => {

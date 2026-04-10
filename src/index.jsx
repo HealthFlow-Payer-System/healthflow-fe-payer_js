@@ -2,8 +2,7 @@ import React from "react";
 import messages_en from "./translations/en.json";
 import PayerPicker from "./pickers/PayerPicker";
 import PayerTypePicker from "./pickers/PayerTypePicker";
-import AccountBalance from "@mui/icons-material/AccountBalance";
-import { FormattedMessage } from "@openimis/fe-core";
+import { GetIconComponent, FormattedMessage } from "@openimis/fe-core";
 import PayerDetailsPage from "./pages/PayerDetailsPage";
 import PayersPage from "./pages/PayersPage";
 import {
@@ -14,6 +13,7 @@ import {
   PAYER_PICKER_PROJECTION
 } from "./hooks";
 import { RIGHT_PAYERS } from "./constants";
+const AccountBalance = GetIconComponent("AccountBalance")
 
 const DEFAULT_CONFIG = {
   "translations": [{ key: "en", messages: messages_en }],

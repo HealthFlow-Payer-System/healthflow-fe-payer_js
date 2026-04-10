@@ -1,7 +1,10 @@
 import React, { useState, useCallback } from "react";
 
 import { Tooltip, IconButton } from "@mui/material";
-import { Tab as TabIcon, Delete as DeleteIcon } from "@mui/icons-material";
+import { GetIconComponent } from "@openimis/fe-core";
+const TabIcon = GetIconComponent("Tab")
+const DeleteIcon = GetIconComponent("Delete")
+
 import { styled } from "@mui/material/styles";
 
 import { Searcher, useTranslations, useModulesManager, ConfirmDialog } from "@openimis/fe-core";

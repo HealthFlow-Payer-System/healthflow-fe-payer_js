@@ -2,9 +2,8 @@ import React from "react";
 import clsx from "clsx";
 
 import { styled } from "@mui/material/styles";
-import ReplayIcon from "@mui/icons-material/Replay";
 
-import { Form, ProgressOrError } from "@openimis/fe-core";
+import { GetIconComponent, Form, ProgressOrError } from "@openimis/fe-core";
 import FundingPanel from "./FundingPanel";
 import MainPanelForm from "./MainPanelForm";
 
@@ -12,6 +11,7 @@ const StyledPayerForm = styled('div')(({ theme }) => ({
   ...theme.page ?? {},
   '&.locked': theme.page?.locked ?? {},
 }));
+const ReplayIcon = GetIconComponent("Replay")
 
 const PayerForm = ({ readOnly, onBack, onSave, payer, canSave, onReset, onChange, error }) => {
   return (

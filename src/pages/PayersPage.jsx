@@ -6,13 +6,14 @@ import {
   withTooltip,
   withHistory,
   clearCurrentPaginationPage,
+  GetIconComponent,
 } from "@openimis/fe-core";
 import { styled } from "@mui/material/styles";
 import { useSelector, useDispatch } from "react-redux";
 import { RIGHT_PAYERS_ADD, RIGHT_PAYERS_DELETE, MODULE_NAME } from "../constants";
 import { usePayerDeleteMutation } from "../hooks";
 import { Fab } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
+const AddIcon = GetIconComponent("Add")
 import PayerSearcher from "../components/PayerSearcher";
 
 const StyledPayersPage = styled('div')(({ theme }) => ({
