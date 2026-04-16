@@ -31,17 +31,13 @@ const DEFAULT_CONFIG = {
   ],
 
   "core.Router": [
-    { path: "payer/payers", component: PayersPage },
-    { path: "payer/payers/new", component: PayerDetailsPage },
-    { path: `payer/payers/overview/:payer_id`, component: PayerDetailsPage },
+    { path: "payer/payers", text: "payer.adminMenu.payers.title", id: 'admin.payers',component: PayersPage, rights: [RIGHT_PAYERS], icon: "AccountBalance" },
+    { path: "payer/payers/new", component: PayerDetailsPage, rights: [RIGHT_PAYERS], icon: "AccountBalance" },
+    { path: `payer/payers/overview/:payer_id`, component: PayerDetailsPage, rights: [RIGHT_PAYERS], icon: "AccountBalance" },
   ],
   "admin.MainMenu": [
     {
-      text: <FormattedMessage module="payer" id="adminMenu.payers.title" />,
-      icon: <AccountBalance />,
-      route: "/payer/payers",
-      filter: (rights) => rights.includes(RIGHT_PAYERS),
-      id: 'admin.payers', 
+      route: "payer/payers",
     },
   ],
   "invoice.SubjectAndThirdpartyPicker": [
