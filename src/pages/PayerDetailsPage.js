@@ -69,7 +69,7 @@ const PayerDetailsPage = (props) => {
           payer={values}
           canSave={() => validatePayerForm(values)}
           onBack={() => historyPush(modulesManager, history, "payer.payers")}
-          onSave={rights.includes(RIGHT_PAYERS_EDIT) ? onSave : undefined}
+          onSave={rights.some((x) => [RIGHT_PAYERS_ADD, RIGHT_PAYERS_EDIT].includes(x)) ? onSave : undefined}
           onReset={onReset}
         />
       )}
