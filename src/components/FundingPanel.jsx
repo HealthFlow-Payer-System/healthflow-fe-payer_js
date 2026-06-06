@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 
-import { Grid, Paper, Typography, Button } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import AddIcon from "@material-ui/icons/Add";
+import { Grid, Paper, Typography, Button } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
-import { Table, useTranslations, useModulesManager } from "@openimis/fe-core";
+
+import { GetIconComponent, Table, useTranslations, useModulesManager } from "@openimis/fe-core";
 import { usePayerFundingsQuery } from "../hooks";
 import AddFundingDialog from "./AddFundingDialog";
 
-const useStyles = makeStyles((theme) => ({
-  item: theme.paper.item,
-  paper: theme.paper.paper,
-  tableTitle: theme.table.title,
+const StyledFundingPanel = styled('div')(({ theme }) => ({
+  '& .item': theme.paper?.item ?? {},
+  '& .paper': theme.paper?.paper ?? {},
+  '& .tableTitle': theme.table?.title ?? {},
 }));
-
+const AddIcon = GetIconComponent("Add")
 const HEADERS = ["payer.payDate", "payer.product", "payer.receipt", "payer.amount"];
 
 const FundingPanel = (props) => {
@@ -22,7 +22,6 @@ const FundingPanel = (props) => {
   const [isDialogOpen, setDialogOpen] = useState(false);
   const modulesManager = useModulesManager();
   const { formatMessage, formatAmount, formatDateFromISO } = useTranslations("payer", modulesManager);
-  const classes = useStyles();
 
   const { data, error, isLoading, refetch } = usePayerFundingsQuery(
     { variables: { payerId: edited.uuid, first: 10, after: pagination.afterCursor, before: pagination.beforeCursor } },
@@ -39,14 +38,14 @@ const FundingPanel = (props) => {
     return <></>;
   }
   return (
-    <>
-      <Grid item xs={12}>
-        <Paper className={classes.paper}>
-          <Grid container className={classes.tableTitle} justifyContent="space-between" alignItems="center">
-            <Grid item>
+    <StyledFundingPanel>
+      <Grid size={12}>
+        <Paper className="paper">
+          <Grid container className="tableTitle" justifyContent="space-between" alignItems="center">
+            <Grid>
               <Typography variant="h6">{formatMessage("FundingPanel.table.title")}</Typography>
             </Grid>
-            <Grid item>
+            <Grid>
               <Button
                 variant="contained"
                 onClick={() => setDialogOpen(true)}
@@ -58,7 +57,7 @@ const FundingPanel = (props) => {
             </Grid>
           </Grid>
           <Grid container>
-            <Grid item xs={12}>
+            <Grid size={12}>
               <Table
                 error={error}
                 fetching={isLoading}
@@ -89,7 +88,7 @@ const FundingPanel = (props) => {
         </Paper>
       </Grid>
       <AddFundingDialog open={isDialogOpen} onClose={onDialogClose} payer={edited} />
-    </>
+    </StyledFundingPanel>
   );
 };
 

@@ -1,22 +1,25 @@
 import React, { useState, useCallback } from "react";
 
-import { Tooltip, IconButton } from "@material-ui/core";
-import { Tab as TabIcon, Delete as DeleteIcon } from "@material-ui/icons";
-import { withTheme, withStyles } from "@material-ui/core/styles";
+import { Tooltip, IconButton } from "@mui/material";
+import { GetIconComponent } from "@openimis/fe-core";
+const TabIcon = GetIconComponent("Tab")
+const DeleteIcon = GetIconComponent("Delete")
 
-import { Searcher, useTranslations, useModulesManager, combine, ConfirmDialog } from "@openimis/fe-core";
+import { styled } from "@mui/material/styles";
+
+import { Searcher, useTranslations, useModulesManager, ConfirmDialog } from "@openimis/fe-core";
 import { usePayersQuery } from "../hooks";
 import PayerFilters from "./PayerFilters";
 
 const isRowDisabled = (_, row) => Boolean(row.validityTo);
 const formatLocation = (location) => (location ? `${location.code} - ${location.name}` : null);
 
-const styles = (theme) => ({
-  horizontalButtonContainer: theme.buttonContainer.horizontal,
-});
+const StyledPayerSearcher = styled('div')(({ theme }) => ({
+  '& .horizontalButtonContainer': theme.buttonContainer?.horizontal ?? {},
+}));
 
 const PayerSearcher = (props) => {
-  const { cacheFiltersKey, classes, onDelete, canDelete, onDoubleClick } = props;
+  const { cacheFiltersKey, onDelete, canDelete, onDoubleClick } = props;
   const modulesManager = useModulesManager();
   const { formatMessage, formatDateFromISO, formatMessageWithValues } = useTranslations("payer", modulesManager);
   const [filters, setFilters] = useState({});
@@ -82,7 +85,7 @@ const PayerSearcher = (props) => {
       (p) => (filters?.showHistory?.value ? formatDateFromISO(p.validityFrom) : null),
       (p) => (filters?.showHistory?.value ? formatDateFromISO(p.validityTo) : null),
       (p) => (
-        <div className={classes.horizontalButtonContainer}>
+        <div className="horizontalButtonContainer">
           <Tooltip title={formatMessage("PayerSearcher.openNewTab")}>
             <IconButton onClick={() => onDoubleClick(p, true)}>
               <TabIcon />
@@ -100,7 +103,7 @@ const PayerSearcher = (props) => {
     ];
   }, []);
   return (
-    <>
+    <StyledPayerSearcher>
       {payerToDelete && (
         <ConfirmDialog
           confirm={{
@@ -130,10 +133,8 @@ const PayerSearcher = (props) => {
         filtersToQueryParams={filtersToQueryParam}
         itemFormatters={itemFormatters}
       />
-    </>
+    </StyledPayerSearcher>
   );
 };
 
-const enhance = combine(withTheme, withStyles(styles));
-
-export default enhance(PayerSearcher);
+export default PayerSearcher;

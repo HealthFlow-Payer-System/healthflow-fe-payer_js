@@ -6,18 +6,19 @@ import {
   withTooltip,
   withHistory,
   clearCurrentPaginationPage,
+  GetIconComponent,
 } from "@openimis/fe-core";
-import { makeStyles } from "@material-ui/styles";
+import { styled } from "@mui/material/styles";
 import { useSelector, useDispatch } from "react-redux";
 import { RIGHT_PAYERS_ADD, RIGHT_PAYERS_DELETE, MODULE_NAME } from "../constants";
 import { usePayerDeleteMutation } from "../hooks";
-import { Fab } from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
+import { Fab } from "@mui/material";
+const AddIcon = GetIconComponent("Add")
 import PayerSearcher from "../components/PayerSearcher";
 
-const useStyles = makeStyles((theme) => ({
-  page: theme.page,
-  fab: theme.fab,
+const StyledPayersPage = styled('div')(({ theme }) => ({
+  ...theme.page ?? {},
+  '& .fab': theme.fab ?? {},
 }));
 
 const PayersPage = (props) => {
@@ -27,7 +28,6 @@ const PayersPage = (props) => {
   const { formatMessage, formatMessageWithValues } = useTranslations("payer", modulesManager);
   const rights = useSelector((state) => state.core?.user?.i_user?.rights ?? []);
   const module = useSelector((state) => state.core?.savedPagination?.module);
-  const classes = useStyles();
   const deleteMutation = usePayerDeleteMutation();
   const onDoubleClick = (payer, newTab) =>
     historyPush(modulesManager, history, "payer.payersOverview", [payer.uuid], newTab);
@@ -46,19 +46,20 @@ const PayersPage = (props) => {
   }, [module]);
 
   return (
-    <div className={classes.page}>
+    <StyledPayersPage>
       <PayerSearcher onDelete={onDelete} canDelete={canDelete} onDoubleClick={onDoubleClick} />
       {rights.includes(RIGHT_PAYERS_ADD) &&
         withTooltip(
-          <div className={classes.fab}>
+          <div className="fab">
             <Fab color="primary" onClick={() => historyPush(modulesManager, history, "payer.payersNew")}>
               <AddIcon />
             </Fab>
           </div>,
           formatMessage("PayersPage.addNewPayer"),
         )}
-    </div>
+    </StyledPayersPage>
   );
 };
 
+export { StyledPayersPage };
 export default withHistory(PayersPage);

@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { Button, Dialog, DialogActions, DialogContent, Grid, DialogTitle } from "@material-ui/core";
+import { Button, Dialog, DialogActions, DialogContent, Grid, DialogTitle } from "@mui/material";
 import {
   useTranslations,
   useModulesManager,
@@ -42,7 +42,7 @@ const AddFundingDialog = (props) => {
         <DialogTitle>{formatMessage("title")}</DialogTitle>
         <DialogContent>
           <Grid container spacing={1} direction="column">
-            <Grid item>
+            <Grid>
               <PublishedComponent
                 pubRef="product.ProductPicker"
                 value={form.product}
@@ -51,7 +51,7 @@ const AddFundingDialog = (props) => {
                 onChange={(product) => setForm({ ...form, product })}
               />
             </Grid>
-            <Grid item>
+            <Grid>
               <NumberInput
                 module="payer"
                 label="amount"
@@ -61,7 +61,7 @@ const AddFundingDialog = (props) => {
                 onChange={(amount) => setForm({ ...form, amount })}
               />
             </Grid>
-            <Grid item>
+            <Grid>
               <TextInput
                 module="payer"
                 label="receipt"
@@ -71,7 +71,7 @@ const AddFundingDialog = (props) => {
                 onChange={(receipt) => setForm({ ...form, receipt })}
               />
             </Grid>
-            <Grid item>
+            <Grid>
               <PublishedComponent
                 pubRef="core.DatePicker"
                 value={form.payDate}

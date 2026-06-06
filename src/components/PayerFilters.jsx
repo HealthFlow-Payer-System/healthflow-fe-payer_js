@@ -7,16 +7,16 @@ import {
   useModulesManager,
   useDebounceCb,
   decodeId,
+  GRID_RESPONSIVE_STANDARD,
+  GRID_RESPONSIVE_SMALL,
 } from "@openimis/fe-core";
-import { FormControlLabel, Grid, Checkbox } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { FormControlLabel, Grid, Checkbox } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
-const useStyles = makeStyles((theme) => ({
-  form: {
-    padding: "0 0 10px 0",
-    width: "100%",
-  },
-  item: {
+const StyledPayerFilters = styled('section')(({ theme }) => ({
+  padding: "0 0 10px 0",
+  width: "100%",
+  '& .item': {
     padding: theme.spacing(1),
   },
 }));
@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
 const PayerFilters = (props) => {
   const { filters, onChangeFilters } = props;
   const modulesManager = useModulesManager();
-  const classes = useStyles();
   const { formatMessage } = useTranslations("payer", modulesManager);
 
   const onValueChange = (id, value) => {
@@ -34,13 +33,13 @@ const PayerFilters = (props) => {
   const onChangeDebounce = useDebounceCb(onValueChange, modulesManager.getConf("fe-admin", "debounceTime", 500));
 
   return (
-    <section className={classes.form}>
+    <StyledPayerFilters>
       <Grid container>
         <ControlledField
           module="payer"
           id="name"
           field={
-            <Grid item xs={4} className={classes.item}>
+            <Grid size={GRID_RESPONSIVE_STANDARD} className="item">
               <TextInput
                 module="payer"
                 name="name"
@@ -55,7 +54,7 @@ const PayerFilters = (props) => {
           module="payer"
           id="region"
           field={
-            <Grid item xs={4} className={classes.item}>
+            <Grid size={GRID_RESPONSIVE_STANDARD} className="item">
               <PublishedComponent
                 pubRef="location.RegionPicker"
                 value={filters.location?.value?.parent ?? filters.location?.value}
@@ -71,7 +70,7 @@ const PayerFilters = (props) => {
           module="payer"
           id="district"
           field={
-            <Grid item xs={4} className={classes.item}>
+            <Grid size={GRID_RESPONSIVE_STANDARD} className="item">
               <PublishedComponent
                 pubRef="location.DistrictPicker"
                 value={filters.location?.value?.parent ? filters.location?.value : null}
@@ -92,7 +91,7 @@ const PayerFilters = (props) => {
           module="payer"
           id="region"
           field={
-            <Grid item xs={4} className={classes.item}>
+            <Grid size={GRID_RESPONSIVE_STANDARD} className="item">
               <PublishedComponent
                 pubRef="payer.PayerTypePicker"
                 value={filters?.type?.value}
@@ -106,7 +105,7 @@ const PayerFilters = (props) => {
           module="payer"
           id="email"
           field={
-            <Grid item xs={4} className={classes.item}>
+            <Grid size={GRID_RESPONSIVE_STANDARD} className="item">
               <TextInput
                 module="payer"
                 name="email"
@@ -121,7 +120,7 @@ const PayerFilters = (props) => {
           module="payer"
           id="phone"
           field={
-            <Grid item xs={4} className={classes.item}>
+            <Grid size={GRID_RESPONSIVE_STANDARD} className="item">
               <TextInput
                 module="payer"
                 name="phone"
@@ -136,7 +135,7 @@ const PayerFilters = (props) => {
           module="payer"
           id="showHistory"
           field={
-            <Grid item xs={12} className={classes.item}>
+            <Grid size={GRID_RESPONSIVE_SMALL} className="item">
               <FormControlLabel
                 control={
                   <Checkbox
@@ -158,7 +157,7 @@ const PayerFilters = (props) => {
           }
         />
       </Grid>
-    </section>
+    </StyledPayerFilters>
   );
 };
 
